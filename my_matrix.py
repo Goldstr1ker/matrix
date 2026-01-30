@@ -151,3 +151,40 @@ def is_magic_square(matrix: list)->bool:
         else:
             pass
     return flag
+def create_012_matrix(n: int)->list:
+    """Создаёт квадратную матрицу, где на побочной диагонали 1, ниже - двойки, выше - нули
+
+    Args:
+        n (int): сторона квадратной матрицы
+
+    Returns:
+        list: возвращает матрицу заполненную числами. Пример: [[0, 0, 1], [0, 1, 2], [1, 2, 2]]
+    """
+    matrix = create_0_matrix(n, n)
+
+    for i in range(len(matrix)-1, 0, -1):
+        for j in range(len(matrix)-1, len(matrix)-i-1, -1):
+            matrix[i][j] = 2
+
+    for i in range(n):
+        matrix[i][len(matrix)-1-i] = 1
+    return matrix
+def create_sequence_matrix(n: int, m: int) -> list:
+    """Создаёт матрицу n*m, последовательно заполненную числами от 1 до n*m
+
+    Args:
+        n (int): число строк(списков в составе матрицы)
+        m (int): число строк(элементов в составе каждого из списков)
+
+    Returns:
+        list: матрица. Пример при n=2, m=3: [[1, 2, 3], [4, 5, 6]]
+    """
+    tracker = 1
+    matrix = []
+    for i in range(n):
+        row = []
+        for j in range(tracker, tracker+m):
+            row.append(j)
+        matrix.append(row)
+        tracker += m
+    return matrix
