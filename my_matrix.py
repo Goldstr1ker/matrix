@@ -188,3 +188,23 @@ def create_sequence_matrix(n: int, m: int) -> list:
         matrix.append(row)
         tracker += m
     return matrix
+def step_matrix(step: int, columns: int)-> list:
+    """Функция для создания матрицы с шагом и числом строк step и числом колонок columns
+
+    Args:
+        step (int): шаг каждого элемента матрицы(начало с 1) и число колонок
+        columns (int): число колонок в матрице
+
+    Returns:
+        list: матрица, в виде вложенных списков
+    """
+    matrix = []
+    for i in range(1, step+1):
+        row = []
+        counter = 0
+        for j in range(columns):
+            num = i*counter
+            row.append(num)
+            counter+=1
+        matrix.append(row)
+    return matrix
